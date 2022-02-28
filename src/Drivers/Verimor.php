@@ -20,7 +20,7 @@ class Verimor extends Driver
             'timeout' => 60,
             'verify' => true,
             'headers' => [
-                'Content-Type' => 'application/json',
+                'Content-Type' => 'application/json'
             ],
             'json' => [
                 "username" => $this->username,

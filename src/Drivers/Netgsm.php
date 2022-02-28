@@ -2,6 +2,8 @@
 
 namespace Fowitech\Sms\Drivers;
 
+use Exception;
+
 class Netgsm extends Driver
 {
     private $baseUrl = 'https://api.netgsm.com.tr/';
@@ -20,19 +22,23 @@ class Netgsm extends Driver
         $xml .= '<mp><msg><![CDATA['.$this->text.']]></msg><no>'.$this->recipients[0].'</no></mp>';
         $xml .= '</body></mainbody>';
 
-        $response = $this->client->request('GET', $this->baseUrl.'xmlbulkhttppost.asp', [
-            'timeout' => 100,
-            'verify' => false,
-            'headers' => [
-                ['Content-Type' => 'text/xml; charset=UTF8']
-            ],
-            'body' => $xml
-        ]);
+        try {
+            $response = $this->client->request('GET', $this->baseUrl.'xmlbulkhttppost.asp', [
+                'timeout' => 100,
+                'verify' => false,
+                'headers' => [
+                    'Content-Type' => 'text/xml; charset=UTF8'
+                ],
+                'body' => $xml
+            ]);
 
-        $contents = explode(' ', $response->getBody()->getContents());
-        if($contents[0] == 00){
-            return true;
-        }else{
+            $contents = explode(' ', $response->getBody()->getContents());
+            if($contents[0] == 00){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception $exception){
             return false;
         }
     }

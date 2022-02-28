@@ -4,10 +4,11 @@ namespace Fowitech\Sms\Drivers;
 
 class Mutlucell extends Driver
 {
-    private $baseUrl = 'http://sms.verimor.com.tr/v2/';
+    private $baseUrl = 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex';
 
     public function __construct()
     {
+        $this->sender = config('sms.mutlucell.sender');
         $this->username = config('sms.mutlucell.username');
         $this->password = config('sms.mutlucell.password');
         $this->client = $this->getInstance();
@@ -15,6 +16,18 @@ class Mutlucell extends Driver
 
     public function send($options = [])
     {
-        // TODO: Implement send() method.
+        $numbers = implode(',', $this->recipients);
+        $xml = '<?xml version="1.0" encoding="UTF-8"?><smspack ka="'.$this->username.'" pwd="'.$this->password.'" org="'.$this->sender.'" ><mesaj><metin>'.$this->text.'</metin><nums>'.$numbers.'</nums></mesaj></smspack>';
+
+        $response = $this->client->request('POST', $this->baseUrl, [
+            'timeout' => 100,
+            'verify' => false,
+            'headers' => [
+                'Content-Type' => 'text/xml; charset=UTF8'
+            ],
+            'body' => $xml
+        ]);
+
+        return $response->getBody()->getContents();
     }
 }
