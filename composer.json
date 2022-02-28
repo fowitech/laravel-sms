@@ -1,0 +1,56 @@
+{
+    "name": "fowitech/laravel-sms",
+    "description": "Persistent sms package for Laravel",
+    "keywords": [
+        "fowitech",
+        "laravel",
+        "sms"
+    ],
+    "homepage": "https://github.com/fowitech/laravel-sms",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Oğuzhan Subaşı",
+            "email": "oguzhan.subasi@fowitech.com",
+            "homepage": "https://fowitech.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fowitech\\Sms\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fowitech\\Sms\\Tests\\": "tests"
+        },
+        "files": [
+            "src/Helper.php"
+        ]
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fowitech\\Sms\\SmsServiceProvider"
+            ],
+            "aliases": {
+                "Sms": "Fowitech\\Sms\\Facades\\Sms"
+            }
+        }
+    }
+}
