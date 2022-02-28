@@ -28,6 +28,6 @@ class Mutlucell extends Driver
             'body' => $xml
         ]);
 
-        return $response->getBody()->getContents();
+        return startsWith($response->getBody()->getContents(), '$');
     }
 }
