@@ -2,36 +2,59 @@
 
 namespace Fowitech\Sms\Drivers;
 
+use Exception;
+
 class Iletimerkezi extends Driver
 {
     private $baseUrl = 'https://api.iletimerkezi.com/v1/';
 
-    public function __construct($message = null)
+    public function __construct()
     {
         $this->sender = config('sms.iletimerkezi.sender');
-        $this->username = config('sms.iletimerkezi.username');
-        $this->password = config('sms.iletimerkezi.password');
+        $this->username = config('sms.iletimerkezi.key');
+        $this->password = config('sms.iletimerkezi.hash');
         $this->client = $this->getInstance();
     }
 
-    public function send()
+    public function send($options = [])
     {
-        $xml = '<?xml version="1.0" encoding="UTF-8"?><request><authentication><username>'.$this->username.'</username><password>'.$this->password.'</password></authentication>';
-        $xml .= '<order><sender>'.$this->sender.'</sender><sendDateTime></sendDateTime><iys>1</iys><iysList>BIREYSEL</iysList><message><text><![CDATA['.$this->text.']]></text><receipents>';
-        foreach ($this->recipients as $recipient){
-            $xml .= '<number>'.$recipient.'</number>';
+        try {
+            $response = $this->client->request('POST', $this->baseUrl.'send-sms/json', [
+                'timeout' => 100,
+                'verify' => false,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    "request" => [
+                        "authentication" => [
+                            "key" => $this->username,
+                            "hash" => $this->password
+                        ],
+                        "order" => [
+                            "sender" => $this->sender,
+                            "sendDateTime" => [],
+                            "iys" => "1",
+                            "iysList" => "BIREYSEL",
+                            "message" => [
+                                "text" => $this->text,
+                                "receipents" => [
+                                    "number" => $this->recipients
+                                ]
+                             ]
+                        ]
+                    ],
+                ]
+            ]);
+
+            $content = json_decode($response->getBody()->getContents(), true);
+            if($content['response']['status']['code'] == 200){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception $exception){
+            return false;
         }
-        $xml .= '</receipents></message></order>';
-        $xml .= '</request>';
-
-        $response = $this->client->request('POST', $this->baseUrl.'send-sms', [
-            'timeout' => 100,
-            'verify' => false,
-            'headers' => [
-                ['Content-Type' => 'text/xml; charset=UTF8']
-            ],
-            'body' => $xml
-        ]);
-
     }
 }

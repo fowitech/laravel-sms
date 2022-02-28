@@ -56,5 +56,5 @@ abstract class Driver
         return $this;
     }
 
-    abstract public function send();
+    abstract public function send($options = []);
 }

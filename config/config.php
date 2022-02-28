@@ -35,5 +35,15 @@ return [
         'sender' => env('MUTLUCELL_SENDER', ''),
         'username' => env('MUTLUCELL_USERNAME', ''),
         'password' => env('MUTLUCELL_PASSWORD', ''),
+    ],
+
+    /**
+     * Iletimerkezi driver settings
+     */
+    'iletimerkezi' => [
+        'transport' => \Fowitech\Sms\Drivers\Iletimerkezi::class,
+        'sender' => env('ILETIMERKEZI_SENDER', ''),
+        'key' => env('ILETIMERKEZI_KEY', ''),
+        'hash' => env('ILETIMERKEZI_HASH', ''),
     ]
 ];

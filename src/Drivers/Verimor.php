@@ -14,9 +14,9 @@ class Verimor extends Driver
         $this->client = $this->getInstance();
     }
 
-    public function send()
+    public function send($options = [])
     {
-        $response = $this->client->request('POST', $this->baseUrl.'/send.json', [
+        $response = $this->client->request('POST', $this->baseUrl.'send.json', [
             'timeout' => 60,
             'verify' => true,
             'headers' => [
@@ -36,6 +36,6 @@ class Verimor extends Driver
             ]
         ]);
 
-        dd($response);
+
     }
 }

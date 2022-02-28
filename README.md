@@ -67,6 +67,12 @@ Sms::message("this message")->to(['Number 1', 'Number 2'])->send();
 # If you want to use a different driver.
 Sms::via('gateway')->message("this message")->to(['Number 1', 'Number 2'])->send();
 
+# If you want to use options array
+$options = [
+    'send_date' => now()->addHour()
+];
+Sms::via('gateway')->message("this message")->to(['Number 1', 'Number 2'])->send($options);
+
 # If you are not a Laravel's facade fan, you can use sms helper:
 sms()->message("this message")->to(['Number 1', 'Number 2'])->send();
 

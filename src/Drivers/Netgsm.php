@@ -14,7 +14,7 @@ class Netgsm extends Driver
         $this->client = $this->getInstance();
     }
 
-    public function send()
+    public function send($options = [])
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?><mainbody><header><company>Netgsm</company><usercode>' . $this->username . '</usercode><password>' . $this->password . '</password><type>n:n</type><msgheader>' . $this->sender . '</msgheader></header><body>';
         $xml .= '<mp><msg><![CDATA['.$this->text.']]></msg><no>'.$this->recipients[0].'</no></mp>';

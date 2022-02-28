@@ -2,6 +2,8 @@
 
 namespace Fowitech\Sms;
 
+use Exception;
+
 class Sms
 {
     public $driver;
@@ -23,7 +25,7 @@ class Sms
         $transport = config("sms.{$driver}.transport");
 
         if(!class_exists($transport)){
-            //
+            throw new Exception('Driver not found.');
         }
 
         return new $transport;
@@ -41,8 +43,8 @@ class Sms
         return $this;
     }
 
-    public function send()
+    public function send($options = [])
     {
-        return $this->driver->send();
+        return $this->driver->send($options);
     }
 }
