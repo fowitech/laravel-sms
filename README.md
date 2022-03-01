@@ -160,7 +160,7 @@ class MyDriver extends Driver
         $this->client = $this->getInstance();
     }
 
-    public function send()
+    public function send($options = [])
     {
         # Main logic of Sending SMS.
     }
