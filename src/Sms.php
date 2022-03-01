@@ -23,12 +23,13 @@ class Sms
     public function setDriver($driver)
     {
         $transport = config("sms.{$driver}.transport");
+        $options = config("sms.{$driver}.options");
 
         if(!class_exists($transport)){
             throw new Exception('Driver not found.');
         }
 
-        return new $transport;
+        return new $transport($options);
     }
 
     public function to($recipients)

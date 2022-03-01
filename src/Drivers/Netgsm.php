@@ -8,7 +8,7 @@ class Netgsm extends Driver
 {
     private $baseUrl = 'https://api.netgsm.com.tr/';
 
-    public function __construct()
+    public function __construct($options = [])
     {
         $this->sender = config('sms.netgsm.sender');
         $this->username = config('sms.netgsm.username');

@@ -8,7 +8,7 @@ class Iletimerkezi extends Driver
 {
     private $baseUrl = 'https://api.iletimerkezi.com/v1/';
 
-    public function __construct()
+    public function __construct($options = [])
     {
         $this->sender = config('sms.iletimerkezi.sender');
         $this->username = config('sms.iletimerkezi.key');
@@ -34,8 +34,8 @@ class Iletimerkezi extends Driver
                         "order" => [
                             "sender" => $this->sender,
                             "sendDateTime" => [],
-                            "iys" => "1",
-                            "iysList" => "BIREYSEL",
+                            "iys" => isset($this->options['iys']) ?? "1",
+                            "iysList" => isset($this->options['iysList']) ?? "BIREYSEL",
                             "message" => [
                                 "text" => $this->text,
                                 "receipents" => [

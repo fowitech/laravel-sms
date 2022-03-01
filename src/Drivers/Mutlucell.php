@@ -6,7 +6,7 @@ class Mutlucell extends Driver
 {
     private $baseUrl = 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex';
 
-    public function __construct()
+    public function __construct($options = [])
     {
         $this->sender = config('sms.mutlucell.sender');
         $this->username = config('sms.mutlucell.username');

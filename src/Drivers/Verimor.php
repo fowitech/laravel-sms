@@ -6,14 +6,16 @@ use Exception;
 
 class Verimor extends Driver
 {
-    private $baseUrl = 'http://sms.verimor.com.tr/v2/';
+    protected $options = [];
+    protected $baseUrl = 'http://sms.verimor.com.tr/v2/';
 
-    public function __construct()
+    public function __construct($options = [])
     {
         $this->sender = config('sms.verimor.sender');
         $this->username = config('sms.verimor.username');
         $this->password = config('sms.verimor.password');
         $this->client = $this->getInstance();
+        $this->options = $options;
     }
 
     public function send($options = [])
@@ -30,7 +32,7 @@ class Verimor extends Driver
                     "password" => $this->password,
                     "source_addr" => $this->sender,
                     "custom_id" => time(),
-                    "datacoding" => "0",
+                    "datacoding" => isset($this->options['datacoding']) ?? "0",
                     "messages" => array(
                         array(
                             "msg" => $this->text,

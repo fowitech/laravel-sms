@@ -15,6 +15,9 @@ return [
         'sender' => env('NETGSM_SENDER', ''),
         'username' => env('NETGSM_USERNAME', ''),
         'password' => env('NETGSM_PASSWORD', ''),
+        'options' => [
+            //
+        ]
     ],
 
     /**
@@ -25,6 +28,11 @@ return [
         'sender' => env('VERIMOR_SENDER', ''),
         'username' => env('VERIMOR_USERNAME', ''),
         'password' => env('VERIMOR_PASSWORD', ''),
+        'options' => [
+            'datacoding' => 0, // 0, 1 or 2
+            'is_commercial' => false,
+            'iys_recipient_type' => 'BIREYSEL', // TACIR
+        ]
     ],
 
     /**
@@ -35,6 +43,9 @@ return [
         'sender' => env('MUTLUCELL_SENDER', ''),
         'username' => env('MUTLUCELL_USERNAME', ''),
         'password' => env('MUTLUCELL_PASSWORD', ''),
+        'options' => [
+            //
+        ]
     ],
 
     /**
@@ -45,5 +56,23 @@ return [
         'sender' => env('ILETIMERKEZI_SENDER', ''),
         'key' => env('ILETIMERKEZI_KEY', ''),
         'hash' => env('ILETIMERKEZI_HASH', ''),
+        'options' => [
+            'iys' => '1',
+            'iysList' => 'BIREYSEL',
+        ]
+    ],
+
+    /**
+     * Vatansms driver settings
+     */
+    'vatansms' => [
+        'transport' => \Fowitech\Sms\Drivers\Vatansms::class,
+        'sender' => env('VATANSMS_SENDER', ''),
+        'userno' => env('VATANSMS_USERNO', ''),
+        'username' => env('VATANSMS_USERNAME', ''),
+        'password' => env('VATANSMS_PASSWORD', ''),
+        'options' => [
+            'tur' => 'Normal' // Normal, Turkce
+        ]
     ]
 ];

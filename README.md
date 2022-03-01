@@ -12,6 +12,7 @@ List of supported gateways:
 - [Mutlucell](https://www.mutlucell.com.tr/)
 - [Verimor](https://www.verimor.com.tr/)
 - [Iletimerkezi](https://www.iletimerkezi.com/)
+- [Vatansms](https://www.vatansms.com/)
 
 - Others are under way.
 
