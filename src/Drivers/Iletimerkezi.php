@@ -34,8 +34,8 @@ class Iletimerkezi extends Driver
                         "order" => [
                             "sender" => $this->sender,
                             "sendDateTime" => [],
-                            "iys" => isset($this->options['iys']) ?? "1",
-                            "iysList" => isset($this->options['iysList']) ?? "BIREYSEL",
+                            "iys" => isset($this->options['iys']) ? $this->options['iys'] : "1",
+                            "iysList" => isset($this->options['iysList']) ? $this->options['iysList'] : "BIREYSEL",
                             "message" => [
                                 "text" => $this->text,
                                 "receipents" => [

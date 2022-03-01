@@ -13,6 +13,7 @@ List of supported gateways:
 - [Verimor](https://www.verimor.com.tr/)
 - [Iletimerkezi](https://www.iletimerkezi.com/)
 - [Vatansms](https://www.vatansms.com/)
+- [Toplusms](https://toplusmspaketleri.com/)
 
 - Others are under way.
 

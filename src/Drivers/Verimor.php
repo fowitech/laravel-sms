@@ -32,7 +32,7 @@ class Verimor extends Driver
                     "password" => $this->password,
                     "source_addr" => $this->sender,
                     "custom_id" => time(),
-                    "datacoding" => isset($this->options['datacoding']) ?? "0",
+                    "datacoding" => isset($this->options['datacoding']) ? $this->options['datacoding'] : "0",
                     "messages" => array(
                         array(
                             "msg" => $this->text,

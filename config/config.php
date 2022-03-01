@@ -74,5 +74,18 @@ return [
         'options' => [
             'tur' => 'Normal' // Normal, Turkce
         ]
+    ],
+
+    /**
+     * Toplusms driver settings
+     */
+    'Toplusms' => [
+        'transport' => \Fowitech\Sms\Drivers\Toplusms::class,
+        'sender' => env('TOPLUSMS_SENDER', ''),
+        'api_id' => env('TOPLUSMS_API_ID', ''),
+        'api_key' => env('TOPLUSMS_API_KEY', ''),
+        'options' => [
+            //
+        ]
     ]
 ];
