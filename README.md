@@ -3,7 +3,7 @@
 ![GitHub License](https://img.shields.io/github/license/fowitech/laravel-sms?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/fowitech/laravel-sms.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/fowitech/laravel-sms)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/fowitech/laravel-sms/Tests?label=tests&style=for-the-badge&logo=github)](https://github.com/fowitech/laravel-sms/actions?query=workflow%3ATests+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/fowitech/laravel-sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/sms)
+[![Total Downloads](https://img.shields.io/packagist/dt/fowitech/laravel-sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/fowitech/laravel-sms)
 
 This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 
