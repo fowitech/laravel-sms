@@ -50,6 +50,9 @@ Then fill the credentials for that gateway in the drivers array.
     'sender' => env('NETGSM_SENDER', ''),
     'username' => env('NETGSM_USERNAME', ''),
     'password' => env('NETGSM_PASSWORD', ''),
+    'options' => [
+        // some options
+    ]
 ],
 ```
 
@@ -132,6 +135,9 @@ First you have to name your driver in the drivers array and also you can specify
     'sender' => env('MYDRIVER_SENDER', ''),
     'username' => env('MYDRIVER_USERNAME', ''),
     'password' => env('MYDRIVER_PASSWORD', ''),
+    'options' => [
+        // some options
+    ]
     ... # Your Config Params here.
 ]
 ```
@@ -146,7 +152,7 @@ use Fowitech\Sms\Drivers\Driver;
 
 class MyDriver extends Driver 
 {
-    public function __construct()
+    public function __construct($options = [])
     {
         $this->sender = config('sms.my_driver.sender');
         $this->username = config('sms.my_driver.username');
