@@ -25,7 +25,7 @@ class Sms
         $transport = config("sms.{$driver}.transport");
         $options = config("sms.{$driver}.options");
 
-        if(!class_exists($transport)){
+        if (!class_exists($transport)) {
             throw new Exception('Driver not found.');
         }
 

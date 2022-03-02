@@ -19,11 +19,11 @@ class Netgsm extends Driver
     public function send($options = [])
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?><mainbody><header><company>Netgsm</company><usercode>' . $this->username . '</usercode><password>' . $this->password . '</password><type>n:n</type><msgheader>' . $this->sender . '</msgheader></header><body>';
-        $xml .= '<mp><msg><![CDATA['.$this->text.']]></msg><no>'.$this->recipients[0].'</no></mp>';
+        $xml .= '<mp><msg><![CDATA[' . $this->text . ']]></msg><no>' . $this->recipients[0] . '</no></mp>';
         $xml .= '</body></mainbody>';
 
         try {
-            $response = $this->client->request('GET', $this->baseUrl.'xmlbulkhttppost.asp', [
+            $response = $this->client->request('GET', $this->baseUrl . 'xmlbulkhttppost.asp', [
                 'timeout' => 100,
                 'verify' => false,
                 'headers' => [
@@ -33,12 +33,12 @@ class Netgsm extends Driver
             ]);
 
             $contents = explode(' ', $response->getBody()->getContents());
-            if($contents[0] == 00){
+            if ($contents[0] == 00) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return false;
         }
     }

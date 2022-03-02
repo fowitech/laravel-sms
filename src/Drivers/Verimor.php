@@ -21,7 +21,7 @@ class Verimor extends Driver
     public function send($options = [])
     {
         try {
-            $response = $this->client->request('POST', $this->baseUrl.'send.json', [
+            $response = $this->client->request('POST', $this->baseUrl . 'send.json', [
                 'timeout' => 60,
                 'verify' => true,
                 'headers' => [
@@ -33,21 +33,21 @@ class Verimor extends Driver
                     "source_addr" => $this->sender,
                     "custom_id" => time(),
                     "datacoding" => isset($this->options['datacoding']) ? $this->options['datacoding'] : "0",
-                    "messages" => array(
-                        array(
+                    "messages" => [
+                        [
                             "msg" => $this->text,
                             "dest" => $this->recipients
-                        )
-                    )
+                        ]
+                    ]
                 ]
             ]);
 
-            if($response->getStatusCode() == 200){
+            if ($response->getStatusCode() == 200) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return false;
         }
     }
