@@ -17,7 +17,11 @@ class Mutlucell extends Driver
     public function send($options = [])
     {
         $numbers = implode(',', $this->recipients);
-        $xml = '<?xml version="1.0" encoding="UTF-8"?><smspack ka="'.$this->username.'" pwd="'.$this->password.'" org="'.$this->sender.'" ><mesaj><metin>'.$this->text.'</metin><nums>'.$numbers.'</nums></mesaj></smspack>';
+        $xml = '<?xml version="1.0" encoding="UTF-8"?><smspack ka="' .
+            $this->username . '" pwd="' .
+            $this->password . '" org="' .
+            $this->sender . '" ><mesaj><metin>' .
+            $this->text . '</metin><nums>' . $numbers . '</nums></mesaj></smspack>';
 
         $response = $this->client->request('POST', $this->baseUrl, [
             'timeout' => 100,
