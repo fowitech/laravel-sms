@@ -19,7 +19,7 @@ abstract class Driver
 
     public static function getInstance()
     {
-        if (! self::$httpClient) {
+        if (!self::$httpClient) {
             self::$httpClient = new Client();
         }
 

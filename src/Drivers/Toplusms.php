@@ -40,12 +40,12 @@ class Toplusms extends Driver
             ]);
 
             $content = json_decode($response->getBody()->getContents(), true);
-            if($content['status'] == 200){
+            if ($content['status'] == 200) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return false;
         }
     }

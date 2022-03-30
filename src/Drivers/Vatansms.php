@@ -26,14 +26,14 @@ class Vatansms extends Driver
             $numbers = implode(',', $this->recipients);
             $tur = $this->options['tur'] ?? "Normal";
 
-            $xmlString='data=<sms>
-                <kno>'. $this->userno.'</kno>
-                <kulad>'. $this->username.'</kulad>
-                <sifre>'.$this->password .'</sifre>
-                <gonderen>'. $this->sender .'</gonderen>
-                <mesaj>'. $this->text .'</mesaj>
-                <numaralar>'. $numbers.'</numaralar>
-                <tur>'.$tur.'</tur>
+            $xmlString = 'data=<sms>
+                <kno>' . $this->userno . '</kno>
+                <kulad>' . $this->username . '</kulad>
+                <sifre>' . $this->password . '</sifre>
+                <gonderen>' . $this->sender . '</gonderen>
+                <mesaj>' . $this->text . '</mesaj>
+                <numaralar>' . $numbers . '</numaralar>
+                <tur>' . $tur . '</tur>
                 </sms>';
 
             $response = $this->client->request('POST', $this->baseUrl, [
@@ -46,12 +46,12 @@ class Vatansms extends Driver
             ]);
 
             $content = explode(':', $response->getBody()->getContents());
-            if($content[0] == 1){
+            if ($content[0] == 1) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return false;
         }
     }

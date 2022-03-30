@@ -17,7 +17,7 @@ class SmsServiceProvider extends ServiceProvider
     {
         if (app() instanceof \Illuminate\Foundation\Application) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('sms.php'),
+                __DIR__ . '/../config/config.php' => config_path('sms.php'),
             ], 'sms');
         }
     }

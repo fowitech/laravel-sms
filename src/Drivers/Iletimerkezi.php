@@ -19,7 +19,7 @@ class Iletimerkezi extends Driver
     public function send($options = [])
     {
         try {
-            $response = $this->client->request('POST', $this->baseUrl.'send-sms/json', [
+            $response = $this->client->request('POST', $this->baseUrl . 'send-sms/json', [
                 'timeout' => 100,
                 'verify' => false,
                 'headers' => [
@@ -41,19 +41,19 @@ class Iletimerkezi extends Driver
                                 "receipents" => [
                                     "number" => $this->recipients
                                 ]
-                             ]
+                            ]
                         ]
                     ],
                 ]
             ]);
 
             $content = json_decode($response->getBody()->getContents(), true);
-            if($content['response']['status']['code'] == 200){
+            if ($content['response']['status']['code'] == 200) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return false;
         }
     }
