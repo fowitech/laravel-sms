@@ -4,6 +4,9 @@
     "keywords": [
         "fowitech",
         "laravel",
+        "twilio",
+        "netgsm",
+        "iletimerkezi",
         "sms"
     ],
     "homepage": "https://github.com/fowitech/laravel-sms",

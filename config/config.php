@@ -8,6 +8,19 @@ return [
     'driver' => env('SMS_DRIVER', 'netgsm'),
 
     /**
+     * Twilio driver settings
+     */
+    'twilio' => [
+        'transport' => \Fowitech\Sms\Drivers\Twilio::class,
+        'account_sid' => env('TWILIO_ACCOUNT_SID', ''),
+        'auth_token' => env('TWILIO_AUTH_TOKEN', ''),
+        'phone' => env('TWILIO_PHONE', ''),
+        'options' => [
+            //
+        ]
+    ],
+
+    /**
      * Netgsm driver settings
      */
     'netgsm' => [
@@ -79,7 +92,7 @@ return [
     /**
      * Toplusms driver settings
      */
-    'Toplusms' => [
+    'toplusms' => [
         'transport' => \Fowitech\Sms\Drivers\Toplusms::class,
         'sender' => env('TOPLUSMS_SENDER', ''),
         'api_id' => env('TOPLUSMS_API_ID', ''),

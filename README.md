@@ -8,6 +8,7 @@
 This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 
 List of supported gateways:
+- [Twilio](https://www.twilio.com/sms)
 - [Netgsm](https://www.netgsm.com.tr/)
 - [Mutlucell](https://www.mutlucell.com.tr/)
 - [Verimor](https://www.verimor.com.tr/)
