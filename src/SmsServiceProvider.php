@@ -5,6 +5,7 @@ namespace Fowitech\Sms;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 
+
 class SmsServiceProvider extends ServiceProvider
 {
     /**
@@ -24,7 +25,7 @@ class SmsServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton('Sms', function () {
+        $this->app->singleton(Sms::class, function () {
             return new Sms($this->app['config']['sms.driver']);
         });
     }
