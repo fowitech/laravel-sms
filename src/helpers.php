@@ -7,6 +7,6 @@ if (!function_exists('sms')) {
      */
     function sms()
     {
-        return app('sms');
+        return app(Sms::class);
     }
 }
