@@ -31,7 +31,7 @@ $ composer require fowitech/laravel-sms
 Publish the config file
 
 ```bash
-$ php artisan sms:publish
+$ php artisan vendor:publish --tag="sms"
 ```
 
 In the config file you can set the default driver to use for all your SMS. But you can also change the driver at runtime.
