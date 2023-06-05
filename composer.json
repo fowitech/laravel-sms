@@ -55,5 +55,6 @@
                 "Sms": "Fowitech\\Sms\\Facades\\Sms"
             }
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
