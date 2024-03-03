@@ -20,6 +20,9 @@ class Sms
         return $this;
     }
 
+    /**
+     * @throws Exception
+     */
     public function setDriver($driver)
     {
         $transport = config("sms.{$driver}.transport");

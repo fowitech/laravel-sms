@@ -6,7 +6,7 @@ use Exception;
 
 class Netgsm extends Driver
 {
-    private $baseUrl = 'https://api.netgsm.com.tr/';
+    private $baseUrl = 'https://api.netgsm.com.tr';
 
     public function __construct($options = [])
     {
@@ -18,18 +18,20 @@ class Netgsm extends Driver
 
     public function send($options = [])
     {
-        $xml = '<?xml version="1.0" encoding="UTF-8"?><mainbody><header><company>Netgsm</company><usercode>' . $this->username . '</usercode><password>' . $this->password . '</password><type>n:n</type><msgheader>' . $this->sender . '</msgheader></header><body>';
-        $xml .= '<mp><msg><![CDATA[' . $this->text . ']]></msg><no>' . $this->recipients[0] . '</no></mp>';
-        $xml .= '</body></mainbody>';
+        $data = [
+            'usercode' => $this->username,
+            'password' => $this->password,
+            'gsmno' => $this->recipients[0],
+            'message' => $this->text,
+            'msgheader' => $this->sender,
+            'filter' => '0',
+            'startdate' => '',
+            'stopdate' => '',
+        ];
 
         try {
-            $response = $this->client->request('GET', $this->baseUrl . 'xmlbulkhttppost.asp', [
-                'timeout' => 100,
-                'verify' => false,
-                'headers' => [
-                    'Content-Type' => 'text/xml; charset=UTF8'
-                ],
-                'body' => $xml
+            $response = $this->client->request('POST', $this->baseUrl . '/sms/send/get/', [
+                'form_params' => $data
             ]);
 
             $contents = explode(' ', $response->getBody()->getContents());
